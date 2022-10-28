@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ namespace }}\Contracts\{{ dummyName }}RepositoryContract;
+use Core\Models\{{ dummyName }};
+
+class {{ class }}Repository implements {{ dummyName }}RepositoryContract
+{
+    protected $model;
+
+    public function __construct({{ dummyName }} $model)
+    {
+        $this->model = $model;
+    }
+
+}
