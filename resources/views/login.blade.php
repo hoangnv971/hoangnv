@@ -11,11 +11,19 @@
 	  <div class="container">
 	    <h1>Welcome</h1>
 	    
-	    <form class="form">
-	      <div class="message"></div>
-	      <input type="text" placeholder="Username">
-	      <div class="message"></div>
-	      <input type="password" placeholder="Password">
+	    <form class="form" method="post">
+	      <div class="message">
+	      </div>
+	      @csrf
+	      <div class="form-group">
+	      	<input type="text" class="form-control" placeholder="Username" name="email">
+	      </div>
+	      <div class="form-group">
+	      	<input type="password" class="form-control" placeholder="Password" name="password">
+	      </div>
+	      <div class="form-group align-left">
+	      	<input type="checkbox" name="remember"> Remember me?
+	      </div>
 	      <button type="submit" id="login-button">Login</button>
 	    </form>
 	  </div>
