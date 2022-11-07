@@ -12,4 +12,8 @@ class RoleRepository extends BaseRepository implements RoleRepositoryContract
         return Role::class;
     }
 
+    public function getByName($name)
+    {
+        return $this->model->where('name', $name)->first();
+    }
 }
