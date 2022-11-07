@@ -4,6 +4,12 @@ namespace Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Core\Repositories\Contracts\UserRepositoryContract;
+use Core\Repositories\UserRepository;
+use Core\Services\UserService;
+use Core\Services\Contracts\UserServiceContract;
+
+
 class CoreServiceProvider extends ServiceProvider
 {
     /**
@@ -23,5 +29,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app->bind(UserRepositoryContract::class, UserRepository::class);
+        $this->app->bind(UserServiceContract::class, UserService::class);
+
     }
 }

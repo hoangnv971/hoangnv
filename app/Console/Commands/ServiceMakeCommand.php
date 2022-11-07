@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputArgument;
 class ServiceMakeCommand extends GeneratorCommand
 {
 
-    protected $name = 'core:make-service';
+    protected $name = 'make:service';
 
     protected $description = 'Create core service';
 
@@ -25,10 +25,10 @@ class ServiceMakeCommand extends GeneratorCommand
 
     protected function createServiceInterface()
     {
-        $serviceName= Str::studly(class_basename($this->argument('name')));
+        $serviceName = Str::studly(class_basename($this->argument('name')));
     
         $this->call('make:interface', [
-            'name'  => "{$serviceName}ServiceContract",
+            'name'  => "{$serviceName}Contract",
             '-s'   => true
         ]);        
     }
@@ -61,7 +61,7 @@ class ServiceMakeCommand extends GeneratorCommand
 
     protected function getPath($name)
     {
-        $name = $name."Service";
+        $name = $name;
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
         
         return base_path().'/core/'.str_replace('\\', '/', $name).'.php';

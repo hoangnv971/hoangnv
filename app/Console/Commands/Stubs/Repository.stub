@@ -1,17 +1,15 @@
 <?php
-
 namespace {{ namespace }};
 
-use {{ namespace }}\Contracts\{{ dummyName }}RepositoryContract;
+use {{ namespace }}\Contracts\{{ dummyName }}Contract;
 use Core\Models\{{ dummyName }};
+use Core\Repositories\BaseRepository;
 
-class {{ class }}Repository implements {{ dummyName }}RepositoryContract
+class {{ class }} extends BaseRepository implements {{ dummyName }}Contract
 {
-    protected $model;
-
-    public function __construct({{ dummyName }} $model)
+    public function model()
     {
-        $this->model = $model;
+        return {{ dummyName }}::class;
     }
 
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Core\Repositories\Contracts\UserRepositoryContract ;
 
 class LoginController extends Controller
 {
@@ -19,7 +19,6 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -33,8 +32,18 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    protected $userRes;
+
+    public function __construct(UserRepositoryContract $userRes)
     {
+        $this->userRes = $userRes;
         $this->middleware('guest')->except('logout');
+    }
+
+    public function index()
+    {
+        dd($this->userRes->all());
+        return view('login');
     }
 }

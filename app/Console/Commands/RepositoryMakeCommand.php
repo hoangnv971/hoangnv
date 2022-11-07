@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
 class RepositoryMakeCommand extends GeneratorCommand
 {
 
-    protected $name = 'core:make-repository';
+    protected $name = 'make:repository';
 
     protected $description = 'Command make repository';
 
@@ -28,7 +28,7 @@ class RepositoryMakeCommand extends GeneratorCommand
         $repositoryName = Str::studly(class_basename($this->argument('name')));
     
         $this->call('make:interface', [
-            'name'  => "{$repositoryName}RepositoryContract",
+            'name'  => "{$repositoryName}Contract",
             '-r'   => true
         ]);        
     }
@@ -61,7 +61,7 @@ class RepositoryMakeCommand extends GeneratorCommand
     
     protected function getPath($name)
     {
-        $name = $name."Repository";
+        $name = $name;
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
         return base_path().'/core/'.str_replace('\\', '/', $name).'.php';
