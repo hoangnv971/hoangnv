@@ -53,17 +53,16 @@ body :-ms-input-placeholder {
   transform: translateY(85px);
 }
 .container {
-  max-width: 600px;
+  max-width: 450px;
   margin: 130px auto;
-  padding: 80px 0;
   height: 400px;
   text-align: center;
-}
-.container h1 {
-  font-size: 40px;
-  transition-duration: 1s;
-  transition-timing-function: ease-in-put;
-  font-weight: 200;
+  h1 {
+    font-size: 40px;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-put;
+    font-weight: 200;
+  }
 }
 form {
   padding: 30px 0;
@@ -71,7 +70,6 @@ form {
   z-index: 2;
   .form-group{
         margin: 0 auto 10px auto;
-        width: 250px;
     input.form-control {
         appearance: none;
         outline: 0;
@@ -85,6 +83,7 @@ form {
         color: white;
         transition-duration: 0.25s;
         font-weight: 300;
+        margin: auto;
         &:hover{
             background-color: rgba(255, 255, 255, 0.4);
         }
@@ -262,4 +261,8 @@ form{
 
 .align-left{
     text-align: left;
+}
+.remember-login{
+    text-align: left;
+    width: 250px;
 }

@@ -57,9 +57,8 @@ body :-ms-input-placeholder {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 450px;
   margin: 130px auto;
-  padding: 80px 0;
   height: 400px;
   text-align: center;
 }
@@ -79,7 +78,6 @@ form {
 
 form .form-group {
   margin: 0 auto 10px auto;
-  width: 250px;
 }
 
 form .form-group input.form-control {
@@ -97,6 +95,7 @@ form .form-group input.form-control {
   color: white;
   transition-duration: 0.25s;
   font-weight: 300;
+  margin: auto;
 }
 
 form .form-group input.form-control:hover {
@@ -282,5 +281,10 @@ form input:focus {
 
 .align-left {
   text-align: left;
+}
+
+.remember-login {
+  text-align: left;
+  width: 250px;
 }
 

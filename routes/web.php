@@ -17,3 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::any('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

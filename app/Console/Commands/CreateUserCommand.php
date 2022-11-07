@@ -23,7 +23,7 @@ class CreateUserCommand extends Command
         $user = [
             'name' => $this->argument('name') ?? $faker->name(),
             'email' => $this->argument('email') ?? $faker->email(),
-            'password' => $this->option('password') ?? "123456"
+            'password' => $this->option('password') ?? "123456",
         ];
         $role = $this->argument('role') ?? 2;
         $response = $this->userService->createUser($user, $role);

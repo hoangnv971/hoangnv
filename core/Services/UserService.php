@@ -23,7 +23,7 @@ class UserService implements UserServiceContract
 
     public function createUser($data = [], $roleId = self::ID_ROLE_USER) // user permission
     {
-        $validator = Validator::make($data,['email' => 'unique:users']);
+        $validator = Validator::make($data, ['email' => 'unique:users']);
         if ($validator->fails()) {
             return [
                 'status' => 0,

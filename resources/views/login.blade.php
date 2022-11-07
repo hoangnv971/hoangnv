@@ -16,13 +16,16 @@
 	      </div>
 	      @csrf
 	      <div class="form-group">
+	      	@if(count($errors) > 0)
+	      		<div class="message">{{$errors->first('email')}}</div>
+	      	@endif
 	      	<input type="text" class="form-control" placeholder="Username" name="email">
 	      </div>
 	      <div class="form-group">
 	      	<input type="password" class="form-control" placeholder="Password" name="password">
 	      </div>
-	      <div class="form-group align-left">
-	      	<input type="checkbox" name="remember"> Remember me?
+	      <div class="form-group remember-login">
+	      	<input type="checkbox" name="remember" id="remember"> <label for="remember">Remember login?</label>
 	      </div>
 	      <button type="submit" id="login-button">Login</button>
 	    </form>

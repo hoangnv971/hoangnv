@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Core\Repositories\Contracts\UserRepositoryContract ;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,17 +34,29 @@ class LoginController extends Controller
      * @return void
      */
 
-    protected $userRes;
 
-    public function __construct(UserRepositoryContract $userRes)
+    public function __construct()
     {
-        $this->userRes = $userRes;
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        dd($this->userRes->all());
+        if($request->post()) {
+            $credentials = $request->validate([
+                'email' => ['required', 'email'],
+                'password' => ['required'],
+            ]);
+            if (Auth::attempt($credentials, $request->remember)) {
+                return redirect()->intended('dashboard');
+            }
+        }
         return view('login');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->intended('login');
     }
 }
