@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);* {
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300);
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -62,7 +63,6 @@ body :-ms-input-placeholder {
   height: 400px;
   text-align: center;
 }
-
 .container h1 {
   font-size: 40px;
   transition-duration: 1s;
@@ -75,11 +75,9 @@ form {
   position: relative;
   z-index: 2;
 }
-
 form .form-group {
   margin: 0 auto 10px auto;
 }
-
 form .form-group input.form-control {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -97,17 +95,14 @@ form .form-group input.form-control {
   font-weight: 300;
   margin: auto;
 }
-
 form .form-group input.form-control:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
-
 form .form-group input.form-control:focus {
   background-color: white;
   width: 300px;
   color: #53e3a6;
 }
-
 form button {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -123,7 +118,6 @@ form button {
   font-size: 18px;
   transition-duration: 0.25s;
 }
-
 form button::hover {
   background-color: #f5f7f9;
 }
@@ -136,7 +130,6 @@ form button::hover {
   height: 100%;
   z-index: 1;
 }
-
 .bg-bubbles li {
   position: absolute;
   list-style: none;
@@ -259,21 +252,17 @@ form button::hover {
 form {
   background: rgba(142, 205, 185, 0.3490196078);
 }
-
 form input:focus {
   text-align: left;
 }
-
 @keyframes square {
   0% {
     transform: translateY(0);
   }
-
   100% {
     transform: translateY(-1150px) rotate(600deg);
   }
 }
-
 .message {
   color: white;
   font-weight: bold;
@@ -287,4 +276,3 @@ form input:focus {
   text-align: left;
   width: 250px;
 }
-
