@@ -19,7 +19,7 @@ mix.webpackConfig(
         '@swc/core': false,
         'inspector': false,
         'esbuild' : false,
-        'module' : false
+        'module' : false,
         "fs": false,
       }  
     } 
@@ -27,8 +27,8 @@ mix.webpackConfig(
 
 
 mix
-     // .sass('core/Styles/admin/scss/main.scss', 'public/assets/admin')
-     .js('core/Styles/admin/js/main.js', 'public/assets/admin');
+     .sass('core/Styles/admin/scss/main.scss', 'public/assets/admin/css')
+     .js('core/Styles/admin/js/main.js', 'public/assets/admin/js');
 
 
 mix.sass('resources/scss/login.scss', 'public/assets');

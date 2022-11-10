@@ -1,3 +1,3 @@
 require('./bootstrap');
-require('jquery')
-require('admin-lte')
+require('bootstrap')
+require('admin-lte');

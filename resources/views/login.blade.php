@@ -32,32 +32,32 @@
 	  </div>
 	  
 	  <ul class="bg-bubbles">
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
-	    <li></li>
+	    
 	  </ul>
 	</div>
 </body>
 </html>
-<script defer src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+<script  src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
 
-<script defer type="text/javascript">
+<script  type="text/javascript">
 	 $("#login-button").click(function(event){
 	     event.preventDefault();
 	   
 	   $('form').fadeOut(500);
 	   $('.wrapper').addClass('form-success');
 	});
+
+	 for (var i = 0; i <= 15; i++) {
+	 	$(".bg-bubbles").append(`<div class="scene">
+    <div class="cube">
+      <div class="cube__face cube__face--front"></div>
+      <div class="cube__face cube__face--back"></div>
+      <div class="cube__face cube__face--right"></div>
+      <div class="cube__face cube__face--left"></div>
+      <div class="cube__face cube__face--top"></div>
+      <div class="cube__face cube__face--bottom"></div>
+    </div>
+  </div>`)
+
+	 }
 </script>

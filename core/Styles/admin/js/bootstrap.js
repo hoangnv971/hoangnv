@@ -1,4 +1,6 @@
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
+
+window.$ = window.jQuery = require('jquery');
 
 window._ = require('lodash');
 
