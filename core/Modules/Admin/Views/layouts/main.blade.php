@@ -16,9 +16,7 @@
 
 
   @include('Admin::layouts.navbar')
-
-  @include('Admin::layouts.sidebar')
-
+  <x-admin-sidebar/>
 
   <div class="content-wrapper">
 

@@ -11,13 +11,15 @@
 	  <div class="container">
 	    <h1>Welcome</h1>
 	    
-	    <form class="form" method="post">
+	    <form class="form" method="post" id="form-login">
 	      <div class="message">
 	      </div>
 	      @csrf
 	      <div class="form-group">
 	      	@if(count($errors) > 0)
-	      		<div class="message">{{$errors->first('email')}}</div>
+	      		@foreach($errors->all() as $error)
+	      			<div class="message">{{$error}}</div>
+	      		@endforeach
 	      	@endif
 	      	<input type="text" class="form-control" placeholder="Username" name="email">
 	      </div>
@@ -37,27 +39,29 @@
 	</div>
 </body>
 </html>
-<script  src="https://code.jquery.com/jquery-3.6.1.slim.js" integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+<script  src="https://code.jquery.com/jquery-3.6.1.js" crossorigin="anonymous"></script>
 
 <script  type="text/javascript">
-	 $("#login-button").click(function(event){
-	     event.preventDefault();
-	   
-	   $('form').fadeOut(500);
-	   $('.wrapper').addClass('form-success');
-	});
+	document.addEventListener('DOMContentLoaded', function(){
+		$("#login-button").click(function(event){
+		     event.preventDefault();
+		   $('.wrapper').addClass('form-success');
+		   $('form').fadeOut(500).submit();
+
+		});
+	})
 
 	 for (var i = 0; i <= 15; i++) {
 	 	$(".bg-bubbles").append(`<div class="scene">
-    <div class="cube">
-      <div class="cube__face cube__face--front"></div>
-      <div class="cube__face cube__face--back"></div>
-      <div class="cube__face cube__face--right"></div>
-      <div class="cube__face cube__face--left"></div>
-      <div class="cube__face cube__face--top"></div>
-      <div class="cube__face cube__face--bottom"></div>
-    </div>
-  </div>`)
+							    	<div class="cube">
+										<div class="cube__face cube__face--front"></div>
+										<div class="cube__face cube__face--back"></div>
+										<div class="cube__face cube__face--right"></div>
+										<div class="cube__face cube__face--left"></div>
+										<div class="cube__face cube__face--top"></div>
+										<div class="cube__face cube__face--bottom"></div>
+								    </div>
+								</div>`);
 
 	 }
 </script>

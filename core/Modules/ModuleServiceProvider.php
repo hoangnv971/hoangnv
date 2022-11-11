@@ -33,9 +33,12 @@ class ModuleServiceProvider extends ServiceProvider
     			$this->loadViewsFrom(__DIR__.'/'.$folder.'/Views', $folder);
     		}
     		if (is_dir(__DIR__.'/'.$folder.'/Components/')) {
-    			Blade::componentNamespace('Core\\Modules\\'.$folder.'\\Components', $folder);
+
     		}
         }
-
+        
+        $this->loadViewComponentsAs('admin', [
+            'sidebar' => \Core\Modules\Admin\Components\SidebarComponent::class,
+        ]);
     }
 }

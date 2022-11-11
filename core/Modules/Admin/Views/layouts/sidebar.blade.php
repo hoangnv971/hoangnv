@@ -20,15 +20,19 @@
       </div>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <i class="fa-solid fa-house"></i>
-              <p>
-                Dashboard
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-          </li>
+          @foreach($sidebar as $routeName => $navItem)
+            <li class="nav-item">
+                <a href="{{route($routeName)}}" class="nav-link @if($routeActive == $routeName) active @endif">
+                  {!!$navItem['icon'] ?? ''!!}
+                  <p>
+                    {{$navItem['name']}}
+                    @if(!empty($navItem['childs']))
+                        <i class="right fas fa-angle-left"></i>
+                    @endif
+                  </p>
+                </a>
+            </li>
+          @endforeach
         </ul>
       </nav>
     </div>

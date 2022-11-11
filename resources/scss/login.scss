@@ -130,7 +130,7 @@ form {
     width: $size+px;
     height: $size+px;
     position:fixed;
-    bottom: 0px;
+    bottom: random(20)+#{'%'};
     left: random(85)+5+#{'%'};
     perspective: $size*2#{px};
     animation-name: up;
