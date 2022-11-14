@@ -1,6 +1,7 @@
-@import '~bootstrap/dist/css/bootstrap.css';
-
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "~@fortawesome/fontawesome-free/scss/solid";
+// @import '~bootstrap/dist/css/bootstrap.css';
 
 @import '~admin-lte';
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+@import '~datatables.net-dt/css/jquery.dataTables.min.css';

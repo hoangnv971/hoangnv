@@ -131,12 +131,12 @@ form button::hover {
   z-index: 1;
 }
 .bg-bubbles .scene:nth-child(1) {
-  width: 69px;
-  height: 69px;
+  width: 53px;
+  height: 53px;
   position: fixed;
-  bottom: 0px;
-  left: 42%;
-  perspective: 138 px;
+  bottom: 2%;
+  left: 37%;
+  perspective: 106 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 3s;
@@ -156,30 +156,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(34.5px);
+  transform: rotateY(0deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(34.5px);
+  transform: rotateY(90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(34.5px);
+  transform: rotateY(180deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(34.5px);
+  transform: rotateY(-90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(34.5px);
+  transform: rotateX(90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(1) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(34.5px);
+  transform: rotateX(-90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(2) {
-  width: 65px;
-  height: 65px;
+  width: 32px;
+  height: 32px;
   position: fixed;
-  bottom: 0px;
-  left: 66%;
-  perspective: 130 px;
+  bottom: 18%;
+  left: 62%;
+  perspective: 64 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 4s;
@@ -199,30 +199,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(32.5px);
+  transform: rotateY(0deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(32.5px);
+  transform: rotateY(90deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(32.5px);
+  transform: rotateY(180deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(32.5px);
+  transform: rotateY(-90deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(32.5px);
+  transform: rotateX(90deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(2) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(32.5px);
+  transform: rotateX(-90deg) translateZ(16px);
 }
 .bg-bubbles .scene:nth-child(3) {
-  width: 74px;
-  height: 74px;
+  width: 71px;
+  height: 71px;
   position: fixed;
-  bottom: 0px;
-  left: 20%;
-  perspective: 148 px;
+  bottom: 11%;
+  left: 28%;
+  perspective: 142 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 5s;
@@ -242,30 +242,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(37px);
+  transform: rotateY(0deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(37px);
+  transform: rotateY(90deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(37px);
+  transform: rotateY(180deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(37px);
+  transform: rotateY(-90deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(37px);
+  transform: rotateX(90deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(3) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(37px);
+  transform: rotateX(-90deg) translateZ(35.5px);
 }
 .bg-bubbles .scene:nth-child(4) {
-  width: 38px;
-  height: 38px;
+  width: 57px;
+  height: 57px;
   position: fixed;
-  bottom: 0px;
-  left: 87%;
-  perspective: 76 px;
+  bottom: 8%;
+  left: 73%;
+  perspective: 114 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 6s;
@@ -285,29 +285,29 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(19px);
+  transform: rotateY(0deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(19px);
+  transform: rotateY(90deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(19px);
+  transform: rotateY(180deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(19px);
+  transform: rotateY(-90deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(19px);
+  transform: rotateX(90deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(4) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(19px);
+  transform: rotateX(-90deg) translateZ(28.5px);
 }
 .bg-bubbles .scene:nth-child(5) {
   width: 52px;
   height: 52px;
   position: fixed;
-  bottom: 0px;
-  left: 89%;
+  bottom: 12%;
+  left: 69%;
   perspective: 104 px;
   animation-name: up;
   animation-duration: 20s;
@@ -346,12 +346,12 @@ form button::hover {
   transform: rotateX(-90deg) translateZ(26px);
 }
 .bg-bubbles .scene:nth-child(6) {
-  width: 45px;
-  height: 45px;
+  width: 70px;
+  height: 70px;
   position: fixed;
-  bottom: 0px;
-  left: 32%;
-  perspective: 90 px;
+  bottom: 17%;
+  left: 29%;
+  perspective: 140 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 8s;
@@ -371,30 +371,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(22.5px);
+  transform: rotateY(0deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(22.5px);
+  transform: rotateY(90deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(22.5px);
+  transform: rotateY(180deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(22.5px);
+  transform: rotateY(-90deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(22.5px);
+  transform: rotateX(90deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(6) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(22.5px);
+  transform: rotateX(-90deg) translateZ(35px);
 }
 .bg-bubbles .scene:nth-child(7) {
-  width: 44px;
-  height: 44px;
+  width: 67px;
+  height: 67px;
   position: fixed;
-  bottom: 0px;
-  left: 88%;
-  perspective: 88 px;
+  bottom: 8%;
+  left: 67%;
+  perspective: 134 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 9s;
@@ -414,30 +414,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(22px);
+  transform: rotateY(0deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(22px);
+  transform: rotateY(90deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(22px);
+  transform: rotateY(180deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(22px);
+  transform: rotateY(-90deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(22px);
+  transform: rotateX(90deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(7) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(22px);
+  transform: rotateX(-90deg) translateZ(33.5px);
 }
 .bg-bubbles .scene:nth-child(8) {
-  width: 61px;
-  height: 61px;
+  width: 37px;
+  height: 37px;
   position: fixed;
-  bottom: 0px;
-  left: 25%;
-  perspective: 122 px;
+  bottom: 19%;
+  left: 68%;
+  perspective: 74 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 10s;
@@ -457,30 +457,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(30.5px);
+  transform: rotateY(0deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(30.5px);
+  transform: rotateY(90deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(30.5px);
+  transform: rotateY(180deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(30.5px);
+  transform: rotateY(-90deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(30.5px);
+  transform: rotateX(90deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(8) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(30.5px);
+  transform: rotateX(-90deg) translateZ(18.5px);
 }
 .bg-bubbles .scene:nth-child(9) {
-  width: 44px;
-  height: 44px;
+  width: 28px;
+  height: 28px;
   position: fixed;
-  bottom: 0px;
-  left: 19%;
-  perspective: 88 px;
+  bottom: 7%;
+  left: 40%;
+  perspective: 56 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 11s;
@@ -500,30 +500,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(22px);
+  transform: rotateY(0deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(22px);
+  transform: rotateY(90deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(22px);
+  transform: rotateY(180deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(22px);
+  transform: rotateY(-90deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(22px);
+  transform: rotateX(90deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(9) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(22px);
+  transform: rotateX(-90deg) translateZ(14px);
 }
 .bg-bubbles .scene:nth-child(10) {
-  width: 51px;
-  height: 51px;
+  width: 53px;
+  height: 53px;
   position: fixed;
-  bottom: 0px;
-  left: 8%;
-  perspective: 102 px;
+  bottom: 20%;
+  left: 26%;
+  perspective: 106 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 12s;
@@ -543,30 +543,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(25.5px);
+  transform: rotateY(0deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(25.5px);
+  transform: rotateY(90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(25.5px);
+  transform: rotateY(180deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(25.5px);
+  transform: rotateY(-90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(25.5px);
+  transform: rotateX(90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(10) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(25.5px);
+  transform: rotateX(-90deg) translateZ(26.5px);
 }
 .bg-bubbles .scene:nth-child(11) {
-  width: 45px;
-  height: 45px;
+  width: 64px;
+  height: 64px;
   position: fixed;
-  bottom: 0px;
-  left: 86%;
-  perspective: 90 px;
+  bottom: 16%;
+  left: 76%;
+  perspective: 128 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 13s;
@@ -586,30 +586,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(22.5px);
+  transform: rotateY(0deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(22.5px);
+  transform: rotateY(90deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(22.5px);
+  transform: rotateY(180deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(22.5px);
+  transform: rotateY(-90deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(22.5px);
+  transform: rotateX(90deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(11) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(22.5px);
+  transform: rotateX(-90deg) translateZ(32px);
 }
 .bg-bubbles .scene:nth-child(12) {
-  width: 58px;
-  height: 58px;
+  width: 35px;
+  height: 35px;
   position: fixed;
-  bottom: 0px;
-  left: 17%;
-  perspective: 116 px;
+  bottom: 4%;
+  left: 9%;
+  perspective: 70 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 14s;
@@ -629,30 +629,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(29px);
+  transform: rotateY(0deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(29px);
+  transform: rotateY(90deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(29px);
+  transform: rotateY(180deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(29px);
+  transform: rotateY(-90deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(29px);
+  transform: rotateX(90deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(12) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(29px);
+  transform: rotateX(-90deg) translateZ(17.5px);
 }
 .bg-bubbles .scene:nth-child(13) {
-  width: 31px;
-  height: 31px;
+  width: 41px;
+  height: 41px;
   position: fixed;
-  bottom: 0px;
-  left: 80%;
-  perspective: 62 px;
+  bottom: 13%;
+  left: 19%;
+  perspective: 82 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 15s;
@@ -672,30 +672,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(15.5px);
+  transform: rotateY(0deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(15.5px);
+  transform: rotateY(90deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(15.5px);
+  transform: rotateY(180deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(15.5px);
+  transform: rotateY(-90deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(15.5px);
+  transform: rotateX(90deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(13) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(15.5px);
+  transform: rotateX(-90deg) translateZ(20.5px);
 }
 .bg-bubbles .scene:nth-child(14) {
-  width: 75px;
-  height: 75px;
+  width: 58px;
+  height: 58px;
   position: fixed;
-  bottom: 0px;
-  left: 39%;
-  perspective: 150 px;
+  bottom: 6%;
+  left: 54%;
+  perspective: 116 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 16s;
@@ -715,30 +715,30 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(37.5px);
+  transform: rotateY(0deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(37.5px);
+  transform: rotateY(90deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(37.5px);
+  transform: rotateY(180deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(37.5px);
+  transform: rotateY(-90deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(37.5px);
+  transform: rotateX(90deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(14) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(37.5px);
+  transform: rotateX(-90deg) translateZ(29px);
 }
 .bg-bubbles .scene:nth-child(15) {
-  width: 56px;
-  height: 56px;
+  width: 47px;
+  height: 47px;
   position: fixed;
-  bottom: 0px;
-  left: 68%;
-  perspective: 112 px;
+  bottom: 15%;
+  left: 13%;
+  perspective: 94 px;
   animation-name: up;
   animation-duration: 20s;
   animation-delay: 17s;
@@ -758,22 +758,22 @@ form button::hover {
   animation-iteration-count: infinite;
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--front {
-  transform: rotateY(0deg) translateZ(28px);
+  transform: rotateY(0deg) translateZ(23.5px);
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--right {
-  transform: rotateY(90deg) translateZ(28px);
+  transform: rotateY(90deg) translateZ(23.5px);
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--back {
-  transform: rotateY(180deg) translateZ(28px);
+  transform: rotateY(180deg) translateZ(23.5px);
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--left {
-  transform: rotateY(-90deg) translateZ(28px);
+  transform: rotateY(-90deg) translateZ(23.5px);
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--top {
-  transform: rotateX(90deg) translateZ(28px);
+  transform: rotateX(90deg) translateZ(23.5px);
 }
 .bg-bubbles .scene:nth-child(15) .cube .cube__face--bottom {
-  transform: rotateX(-90deg) translateZ(28px);
+  transform: rotateX(-90deg) translateZ(23.5px);
 }
 .bg-bubbles .cube {
   width: inherit;

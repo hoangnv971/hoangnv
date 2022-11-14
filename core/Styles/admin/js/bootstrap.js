@@ -1,7 +1,6 @@
 
-
 window.$ = window.jQuery = require('jquery');
-
+window.dt = require( 'datatables.net' );
 window._ = require('lodash');
 
 /**

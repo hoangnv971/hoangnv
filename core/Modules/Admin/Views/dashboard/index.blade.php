@@ -1,5 +1,5 @@
 @extends('Admin::layouts.main')
-@section('title', 'Dashboard')
+@section('title', 'Trang chủ')
 @section('content')
-
+.
 @endsection
