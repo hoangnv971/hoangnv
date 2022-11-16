@@ -6,14 +6,14 @@
 		
 	</div>
 	<div class="card-body">
-		<table id="userTable">
+		<table id="userTable" class="table table-bordered table-striped dataTable dtr-inline table-hover">
 			<thead>
 				<tr>
 					<th>id</th>
 					<th>Tên</th>
 					<th>Email</th>
 					<th>Vị trí</th>
-					<th>Hoạt động</th>
+					{{-- <th>Hoạt động</th> --}}
 				</tr>
 			</thead>
 			<tbody>
@@ -23,11 +23,26 @@
 	</div>
 </div>
 @endsection
+
 @push('scripts')
+
 <script type="text/javascript">
+	$.ajaxSetup({
+		    headers: {
+		        'X-CSRF-TOKEN': $('@csrf').val()
+		    }
+		});
 	$('#userTable').DataTable({
-	    ajax: '{{route('admin.user.index')}}',
-	    
+	    ajax:{
+	    	url: '{{route('admin.user.index')}}',
+	    	method: 'post'
+	    },
+	    columns: [
+	        { data: 'id' },
+	        { data: 'name' },
+	        { data: 'email' },
+	        { data: 'name' },
+	    ]
 	} );
 </script>
 @endpush

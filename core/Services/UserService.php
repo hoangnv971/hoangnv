@@ -1,8 +1,8 @@
 <?php 
 namespace Core\Services;
 
-use Core\Repositories\Contracts\UserRepositoryContract as UserRepository;
-use Core\Repositories\Contracts\RoleRepositoryContract as RoleRepository;
+use Core\Repositories\Contracts\UserRepositoryContract;
+use Core\Repositories\Contracts\RoleRepositoryContract;
 use Core\Services\Contracts\UserServiceContract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -11,14 +11,14 @@ use Illuminate\Support\Str;
 
 class UserService implements UserServiceContract
 {
-    protected $userRes;
-    protected $roleRes;
+    protected $userRepo;
+    protected $roleRepo;
     const ID_ROLE_USER = 2;
 
-    public function __construct(UserRepository $userRes, RoleRepository $roleRes)
+    public function __construct(UserRepositoryContract $userRepo, RoleRepositoryContract $roleRepo)
     {
-        $this->userRes = $userRes;
-        $this->roleRes = $roleRes;
+        $this->userRepo = $userRepo;
+        $this->roleRepo = $roleRepo;
     }
 
     public function createUser($data = [], $roleId = self::ID_ROLE_USER) // user permission
@@ -32,12 +32,19 @@ class UserService implements UserServiceContract
         }
         $data['password'] = Hash::make($data['password']);
         $data['remember_token'] = Str::random(10);
-        $user = $this->userRes->create($data);
+        $user = $this->userRepo->create($data);
         $user->roles()->attach($roleId);
         return [
             'status' => 1,
             'message' => 'Success!',
             'user' => $user
         ];
+    }
+
+    public function dataTable($request)
+    {
+        $users = $this->userRepo->with('roles')->all();
+
+        return $users;
     }
 }
