@@ -19,7 +19,7 @@ class UserController extends Controller
 
 		if($request->ajax()){
 			return response()->json([
-				'data' => $this->userSV->dataTable($request)
+				'data' => $this->userSV->dataTable($request->all())
 			]);
 		}
 		return view('Admin::user.index');
