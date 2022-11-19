@@ -16,10 +16,13 @@ class UserController extends Controller
 
 	public function index(Request $request)
 	{
-
 		if($request->ajax()){
+			$result = $this->userSV->dataTable($request->all());
+
 			return response()->json([
-				'data' => $this->userSV->dataTable($request->all())
+				'data' => $result['users'],
+				'recordsTotal' => $result ['total'],
+				'recordsFiltered'=> $result ['total']
 			]);
 		}
 		return view('Admin::user.index');

@@ -14,4 +14,6 @@ interface BaseRepositoryContract
     public function delete($id);
 
     public function deleteMultipleById($ids = []);
+
+    public function getUserTable($columns, $order, $start, $length, $search, $withOutColumns);
 }

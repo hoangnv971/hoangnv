@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 use Illuminate\Console\Command;
-use Core\Services\Contracts\UserServiceContract as UserService;
+use Core\Services\Contracts\UserServiceContract;
 
 class CreateUserCommand extends Command
 {
@@ -11,7 +11,7 @@ class CreateUserCommand extends Command
     protected $description = 'Create user!';
     protected $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserServiceContract $userService)
     {
         $this->userService = $userService;
         parent::__construct();
@@ -26,15 +26,16 @@ class CreateUserCommand extends Command
             'password' => $this->option('password') ?? "123456",
         ];
         $role = $this->argument('role') ?? 2;
-        $response = $this->userService->createUser($user, $role);
-        if(!$response['status']){
-            foreach($response['errors']->all() as $errors){
-                $this->error($errors);
+        try {
+            $response = $this->userService->createUser($user, $role);
+        } catch (\Exception $e) {
+            foreach($e->getMessages() as $name => $messages){
+                $this->error(implode("\n", $messages));
             }
-            return 0;
+            exit;
         }
-        $this->info("name : {$user['name']}");
-        $this->info("email : {$user['email']}");
+        $this->info("name : {$response->name}");
+        $this->info("email : {$user->email}");
         $this->info("password : {$user['password']}");
         return 0;
     }

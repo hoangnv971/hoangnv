@@ -66,4 +66,24 @@ abstract class BaseRepository implements BaseRepositoryContract
     {
         return $this->model->whereIn('id', $ids)->delete();
     }
+
+    public function getUserTable($columns, $order, $start, $length, $search, $withOutColumns)
+    {
+        $query = $this->model;
+        if($search){
+            foreach($columns as $column){
+                if(in_array($column['data'], $withOutColumns)) continue;
+                $query = $query->orWhere($column['data'], 'like', "%$search%");
+            }  
+        }
+
+        $users = $query->orderBy($columns[$order[0]['column']]['data'])
+                            ->with('roles')
+                            ->limit($length)
+                            ->offset($start)
+                            ->get();
+        $total = $query->count();
+
+        return compact('users', 'total');
+    }
 }

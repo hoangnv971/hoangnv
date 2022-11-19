@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
+use Core\Exceptions\InvalidOrderException;
+use Illuminate\Support\Facades\DB;
 
 class UserService implements UserServiceContract
 {
@@ -23,28 +25,56 @@ class UserService implements UserServiceContract
 
     public function createUser($data = [], $roleId = self::ID_ROLE_USER) // user permission
     {
-        $validator = Validator::make($data, ['email' => 'unique:users']);
+        $validator = Validator::make($data, [
+                                    'email' => 'unique:users|required',
+                                    'password' => 'required'
+                                ]);
         if ($validator->fails()) {
-            return [
-                'status' => 0,
-                'errors' => $validator->errors()
-            ];
+            throw new InvalidOrderException($validator->errors()->get('*'));
         }
         $data['password'] = Hash::make($data['password']);
         $data['remember_token'] = Str::random(10);
-        $user = $this->userRepo->create($data);
+        DB::beginTransaction();
+        try{
+            $user = $this->userRepo->create($data);
+        }catch(\Exception $e){
+            DB::rollBack();
+            throw new InvalidArgumentException($e->getMessage());
+        }
         $user->roles()->attach($roleId);
-        return [
-            'status' => 1,
-            'message' => 'Success!',
-            'user' => $user
-        ];
+        DB::commit();
+        return $user;
     }
 
     public function dataTable($request)
     {
-        $users = $this->userRepo->with('roles')->all();
+        $result = $this->userRepo->getUserTable(
+                                    $request['columns'],
+                                    $request['order'],
+                                    $request['start'],
+                                    $request['length'],
+                                    $request['search']['value'],
+                                    ['roles', 'action']
+                                );
+        return $this->processDataTable($result);
+    }
 
-        return $users;
+    private function processDataTable($data)
+    {
+        $users = [];
+        foreach($data['users'] as $key => $user){
+            $users[$key]['id'] = $user->id;
+            $users[$key]['name'] = $user->name;
+            $users[$key]['email'] = $user->email;
+            $users[$key]['roles'] = $user->roles->pluck('name')->implode(', ');
+            $users[$key]['action'] = "
+                <div class='btn-group'>
+                    <div class='btn btn-primary'>Sửa</div>
+                    <div class='btn btn-danger'>Xóa</div>
+                </div>
+            ";
+        }
+        $data['users'] = $users;
+        return $data;
     }
 }
