@@ -48,7 +48,7 @@ class UserService implements UserServiceContract
 
     public function dataTable($request)
     {
-        $result = $this->userRepo->getUserTable(
+        $result = $this->userRepo->processDataRequest($request)->getUserTable(
                                     $request['columns'],
                                     $request['order'],
                                     $request['start'],
@@ -56,10 +56,10 @@ class UserService implements UserServiceContract
                                     $request['search']['value'],
                                     ['roles', 'action']
                                 );
-        return $this->processDataTable($result);
+        return $this->processDataResponse($result);
     }
 
-    private function processDataTable($data)
+    private function processDataResponse($data)
     {
         $users = [];
         foreach($data['users'] as $key => $user){

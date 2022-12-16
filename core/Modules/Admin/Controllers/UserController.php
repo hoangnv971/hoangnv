@@ -17,7 +17,7 @@ class UserController extends Controller
 	public function index(Request $request)
 	{
 		if($request->ajax()){
-			$result = $this->userSV->dataTable($request->all());
+			$result = $this->userSV->dataTable($request);
 
 			return response()->json([
 				'data' => $result['users'],
