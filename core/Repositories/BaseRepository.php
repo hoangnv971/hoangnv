@@ -2,11 +2,10 @@
 namespace Core\Repositories;
 
 use Core\Models\Base;
-use Core\Repositories\Contracts\BaseRepositoryContract;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
-abstract class BaseRepository implements BaseRepositoryContract
+abstract class BaseRepository 
 {
 
     protected $model;

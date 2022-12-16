@@ -15,7 +15,6 @@ class UserService implements UserServiceContract
 {
     protected $userRepo;
     protected $roleRepo;
-    const ID_ROLE_USER = 2;
 
     public function __construct(UserRepositoryContract $userRepo, RoleRepositoryContract $roleRepo)
     {
@@ -23,14 +22,14 @@ class UserService implements UserServiceContract
         $this->roleRepo = $roleRepo;
     }
 
-    public function createUser($data = [], $roleId = self::ID_ROLE_USER) // user permission
+    public function createUser($data = [], $roleId = 2) // user permission
     {
         $validator = Validator::make($data, [
                                     'email' => 'unique:users|required',
                                     'password' => 'required'
                                 ]);
         if ($validator->fails()) {
-            throw new InvalidOrderException($validator->errors()->get('*'));
+            throw new InvalidArgumentException($validator->errors()->first());
         }
         $data['password'] = Hash::make($data['password']);
         $data['remember_token'] = Str::random(10);
@@ -39,7 +38,8 @@ class UserService implements UserServiceContract
             $user = $this->userRepo->create($data);
         }catch(\Exception $e){
             DB::rollBack();
-            throw new InvalidArgumentException($e->getMessage());
+            Log::errors($e->getMessage());
+            throw new InvalidArgumentException('Account creation failed!');
         }
         $user->roles()->attach($roleId);
         DB::commit();
