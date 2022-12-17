@@ -3,5 +3,5 @@ namespace Core\Services\Contracts;
 
 interface UserServiceContract
 {
-	public function createUser($data = [], $roleId = 2);
+	public function createUser($data = []);
 }

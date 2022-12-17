@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Core\Models\User;
 use Core\Services\Contracts\UserServiceContract;
+
 class UserController extends Controller
 {
 	protected $userSV;
@@ -17,13 +18,9 @@ class UserController extends Controller
 	public function index(Request $request)
 	{
 		if($request->ajax()){
-			$result = $this->userSV->dataTable($request);
+			$response = $this->userSV->dataTable($request);
 
-			return response()->json([
-				'data' => $result['users'],
-				'recordsTotal' => $result ['total'],
-				'recordsFiltered'=> $result ['total']
-			]);
+			return response()->json($response);
 		}
 		return view('Admin::user.index');
 	}

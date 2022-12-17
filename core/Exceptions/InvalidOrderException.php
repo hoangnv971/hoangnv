@@ -7,10 +7,7 @@ class InvalidOrderException extends Exception
 {
     private $_messages;
 
-    public function __construct($message, 
-                                $code = 0, 
-                                Exception $previous = null
-                                ) 
+    public function __construct($message, $code = 0, Exception $previous = null) 
     {
     	if(is_array($message)){
     		$this->_messages = $message;

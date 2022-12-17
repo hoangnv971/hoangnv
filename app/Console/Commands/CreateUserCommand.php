@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Core\Services\Contracts\UserServiceContract;
+use Illuminate\Support\Str;
 
 class CreateUserCommand extends Command
 {
@@ -24,10 +25,11 @@ class CreateUserCommand extends Command
             'name' => $this->argument('name') ?? $faker->name(),
             'email' => $this->argument('email') ?? $faker->email(),
             'password' => $this->option('password') ?? "123456",
+            'role' => $this->argument('role') ?? 2,
+            'remember_token' => Str::random(10),
         ];
-        $role = $this->argument('role') ?? 2;
         try {
-            $response = $this->userService->createUser($user, $role);
+            $response = $this->userService->createUser($user);
         } catch (\Exception $e) {
             foreach($e->getMessages() as $name => $messages){
                 $this->error(implode("\n", $messages));
@@ -35,7 +37,7 @@ class CreateUserCommand extends Command
             exit;
         }
         $this->info("name : {$response->name}");
-        $this->info("email : {$user->email}");
+        $this->info("email : {$response->email}");
         $this->info("password : {$user['password']}");
         return 0;
     }

@@ -67,8 +67,6 @@ class ServiceMakeCommand extends GeneratorCommand
         return base_path().'/core/'.str_replace('\\', '/', $name).'.php';
     }
 
-
-
     protected function getArguments()
     {
         return [

@@ -71,7 +71,7 @@ class InterfaceMakeCommand extends GeneratorCommand
     {
         return [
             ['service', 's', InputOption::VALUE_NONE, 'Create a new interface for the service'],
-            ['repository', 'r', InputOption::VALUE_NONE, 'Create a new interface for the service']
+            ['repository', 'r', InputOption::VALUE_NONE, 'Create a new interface for the repository']
         ];
     }
 }

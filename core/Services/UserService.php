@@ -7,7 +7,6 @@ use Core\Services\Contracts\UserServiceContract;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
-use Illuminate\Support\Str;
 use Core\Exceptions\InvalidOrderException;
 use Illuminate\Support\Facades\DB;
 
@@ -22,51 +21,43 @@ class UserService implements UserServiceContract
         $this->roleRepo = $roleRepo;
     }
 
-    public function createUser($data = [], $roleId = 2) // user permission
+    public function createUser($data = []) // user permission
     {
         $validator = Validator::make($data, [
                                     'email' => 'unique:users|required',
                                     'password' => 'required'
                                 ]);
         if ($validator->fails()) {
-            throw new InvalidArgumentException($validator->errors()->first());
+            throw new InvalidOrderException($validator->errors());
         }
+        $data = $this->hasPassword($data);
+        
+        return $this->userRepo->create($data);    
+    }
+
+    private function hasPassword($data)
+    {
         $data['password'] = Hash::make($data['password']);
-        $data['remember_token'] = Str::random(10);
-        DB::beginTransaction();
-        try{
-            $user = $this->userRepo->create($data);
-        }catch(\Exception $e){
-            DB::rollBack();
-            Log::errors($e->getMessage());
-            throw new InvalidArgumentException('Account creation failed!');
-        }
-        $user->roles()->attach($roleId);
-        DB::commit();
-        return $user;
+        return $data;
     }
 
     public function dataTable($request)
     {
-        $result = $this->userRepo->processDataRequest($request)->getUserTable(
-                                    $request['columns'],
-                                    $request['order'],
-                                    $request['start'],
-                                    $request['length'],
-                                    $request['search']['value'],
-                                    ['roles', 'action']
-                                );
+        $result = $this->userRepo
+                        ->fillData($request)
+                        ->setExceptColumnsDT(['roles', 'action'])
+                        ->dataTables();
         return $this->processDataResponse($result);
     }
 
     private function processDataResponse($data)
     {
         $users = [];
-        foreach($data['users'] as $key => $user){
+        foreach($data['result'] as $key => $user){
             $users[$key]['id'] = $user->id;
             $users[$key]['name'] = $user->name;
             $users[$key]['email'] = $user->email;
-            $users[$key]['roles'] = $user->roles->pluck('name')->implode(', ');
+            $users[$key]['roles'] = $user->roles->isEmpty() ? $user->roles->pluck('name')->implode(', ') : '';
             $users[$key]['action'] = "
                 <div class='btn-group'>
                     <div class='btn btn-primary'>Sửa</div>
@@ -74,7 +65,10 @@ class UserService implements UserServiceContract
                 </div>
             ";
         }
-        $data['users'] = $users;
-        return $data;
+        return [
+            'data' => $users,
+            'recordsTotal' => $data['total'],
+            'recordsFiltered' => $data['total'],
+        ];
     }
 }

@@ -42,14 +42,12 @@ class LoginController extends Controller
 
     public function index(Request $request)
     {
-        // dd(session()->all());
         if($request->post()) {
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
             ]);
             if (Auth::attempt($credentials, $request->remember)) {
-                // dd(session()->all());
                 return redirect()->route('admin.dashboard');
             }
             return back()->withErrors(['msg' => 'Mật khẩu hoặc tài khoản không đúng!']);
