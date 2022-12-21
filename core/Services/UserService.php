@@ -21,23 +21,30 @@ class UserService implements UserServiceContract
         $this->roleRepo = $roleRepo;
     }
 
-    public function createUser($data = []) // user permission
+    public function storeUser($data = []) // user permission
+    {
+        $this->validatorUser($data);
+        $data = $this->filterDataStore($data);
+        return $this->userRepo->create($data);    
+    }
+
+    private function validatorUser($data)
     {
         $validator = Validator::make($data, [
                                     'email' => 'unique:users|required',
                                     'password' => 'required'
                                 ]);
         if ($validator->fails()) {
-            throw new InvalidOrderException($validator->errors());
+            throw new InvalidOrderException($validator->errors()->toArray());
         }
-        $data = $this->hasPassword($data);
-        
-        return $this->userRepo->create($data);    
+
+        return $data;
     }
 
-    private function hasPassword($data)
+    private function filterDataStore($data)
     {
         $data['password'] = Hash::make($data['password']);
+        $data['role_id'] = isset($data['role_id']) ? $data['role_id'] : 2;
         return $data;
     }
 
@@ -54,21 +61,29 @@ class UserService implements UserServiceContract
     {
         $users = [];
         foreach($data['result'] as $key => $user){
-            $users[$key]['id'] = $user->id;
-            $users[$key]['name'] = $user->name;
-            $users[$key]['email'] = $user->email;
-            $users[$key]['roles'] = $user->roles->isEmpty() ? $user->roles->pluck('name')->implode(', ') : '';
-            $users[$key]['action'] = "
-                <div class='btn-group'>
-                    <div class='btn btn-primary'>Sửa</div>
-                    <div class='btn btn-danger'>Xóa</div>
-                </div>
-            ";
+            $users[] = $this->fillUserResponse($user);
         }
+            
         return [
             'data' => $users,
             'recordsTotal' => $data['total'],
             'recordsFiltered' => $data['total'],
         ];
+    }
+
+    private function fillUserResponse($user)
+    {
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'roles' => empty($user->role) ? '' : $user->role->name ,
+            'action' => $this->btnCURD($user->id),
+        ];
+    }
+
+    private function btnCURD($id) {
+        return "<a class='btn btn-primary btn-sm' alt='edit' href='#'><i class='fas fa-pencil-alt'></i> </a>
+                <a class='btn btn-danger btn-sm' alt='remove' href='#'><i class='fas fa-trash'></i> </a>";
     }
 }

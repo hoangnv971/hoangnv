@@ -1179,6 +1179,76 @@ function hasOwnProperty(obj, prop) {
 
 /***/ }),
 
+/***/ "./core/Styles/admin/js/CURD.js":
+/*!**************************************!*\
+  !*** ./core/Styles/admin/js/CURD.js ***!
+  \**************************************/
+/***/ (() => {
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+var CURD = /*#__PURE__*/function () {
+  function CURD(inputs, modal, action) {
+    var method = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'GET';
+    _classCallCheck(this, CURD);
+    this.inputs = inputs;
+    this.action = action;
+    this.method = method;
+    this.modal = modal;
+    this.modalBody = modal.find('.modal-body');
+    this.form = "";
+  }
+  _createClass(CURD, [{
+    key: "showModal",
+    value: function showModal() {
+      this.modal.modal('show');
+      return this;
+    }
+  }, {
+    key: "hideModal",
+    value: function hideModal() {
+      this.modal.modal('hide');
+      return this;
+    }
+  }, {
+    key: "resetModal",
+    value: function resetModal() {
+      this.modalBody.html('');
+      return this;
+    }
+  }, {
+    key: "createForm",
+    value: function createForm() {
+      var _this = this;
+      this.form = document.createElement("form");
+      this.form.setAttribute('action', this.action);
+      this.form.setAttribute('method', this.method);
+      this.inputs.forEach(function (input, key) {
+        var tag = input.tag ? document.createElement(input.tag) : null;
+        if (tag) {
+          if (typeof input.attr != "undefined") {
+            _this.setAttributeTag(tag, input.attr);
+          }
+          _this.form.appendChild(tag);
+        }
+      });
+      this.modalBody.html(this.form);
+      return this;
+    }
+  }, {
+    key: "setAttributeTag",
+    value: function setAttributeTag(tag, attributes) {
+      for (var attr in attributes) {
+        tag.setAttribute(attr, attributes[attr]);
+      }
+    }
+  }]);
+  return CURD;
+}();
+
+/***/ }),
+
 /***/ "./core/Styles/admin/js/bootstrap.js":
 /*!*******************************************!*\
   !*** ./core/Styles/admin/js/bootstrap.js ***!
@@ -1224,8 +1294,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(/*! ./bootstrap */ "./core/Styles/admin/js/bootstrap.js");
-// require('bootstrap');
 __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.min.js");
+__webpack_require__(/*! ./CURD */ "./core/Styles/admin/js/CURD.js");
 
 /***/ }),
 

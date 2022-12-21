@@ -5,19 +5,22 @@ use Exception;
 
 class InvalidOrderException extends Exception
 {
-    private $_messages;
+    private $messages;
 
     public function __construct($message, $code = 0, Exception $previous = null) 
     {
-    	if(is_array($message)){
-    		$this->_messages = $message;
-    		$message = 'Errors!';
+    	if(!is_array($message)) {
+    		$this->messages = [[$message]];
+    	}else{
+    		$this->messages = $message;
     	}
+    	$message = 'errors';
         parent::__construct($message, $code, $previous);
     }
 
-     public function getMessages() { 
-     	return $this->_messages; 
-     }
+	public function getMessages()
+	{
+		return $this->messages;
+	}
 
 }

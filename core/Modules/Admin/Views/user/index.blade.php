@@ -17,12 +17,10 @@
 				</tr>
 			</thead>
 			<tbody>
-				
 			</tbody>
 		</table>
 	</div>
 </div>
-
 @endsection
 
 @push('scripts')
@@ -45,8 +43,21 @@
 	        { data: 'roles' },
 	        { data: 'action'}
 	    ],
+	    columnDefs: [{
+	    	targets: 4,
+	    	className: 'project-actions'
+	    }],
 	    processing: true,
         serverSide: true,
 	} );
+	const create = new CURD([
+							{
+								tag : "input",
+								attr: {
+									class:"hello"
+								}
+							}
+							]
+		);
 </script>
 @endpush
