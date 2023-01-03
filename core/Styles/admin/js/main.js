@@ -1,3 +1,4 @@
 require('./bootstrap');
 require('admin-lte');
-require('./CURD');
+window.Curd = require('./Curd');
+window.custom = require('./custom');

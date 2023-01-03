@@ -23,22 +23,22 @@ class UserService implements UserServiceContract
 
     public function storeUser($data = []) // user permission
     {
-        $this->validatorUser($data);
+        $validator = $this->validatorUser($data);
+        if($validator->fails()) return['status' => 0, 'messages' => $validator->errors(), 'data' => []];
         $data = $this->filterDataStore($data);
-        return $this->userRepo->create($data);    
+        return [
+            'status' => 1,
+            'messages' => [],
+            'data' => $this->userRepo->create($data)
+        ];
     }
 
     private function validatorUser($data)
     {
-        $validator = Validator::make($data, [
+        return Validator::make($data, [
                                     'email' => 'unique:users|required',
                                     'password' => 'required'
                                 ]);
-        if ($validator->fails()) {
-            throw new InvalidOrderException($validator->errors()->toArray());
-        }
-
-        return $data;
     }
 
     private function filterDataStore($data)
@@ -53,17 +53,16 @@ class UserService implements UserServiceContract
         $result = $this->userRepo
                         ->fillData($request)
                         ->setExceptColumnsDT(['roles', 'action'])
-                        ->dataTables();
+                        ->dataTable();
         return $this->processDataResponse($result);
     }
 
     private function processDataResponse($data)
     {
         $users = [];
-        foreach($data['result'] as $key => $user){
+        foreach($data['result'] as $user){
             $users[] = $this->fillUserResponse($user);
         }
-            
         return [
             'data' => $users,
             'recordsTotal' => $data['total'],

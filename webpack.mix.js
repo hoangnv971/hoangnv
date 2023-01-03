@@ -22,7 +22,7 @@ mix.webpackConfig(
         'module' : false,
         "fs": false,
       }  
-    } 
+    }
   });
 
 

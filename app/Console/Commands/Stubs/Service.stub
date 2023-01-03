@@ -1,16 +1,16 @@
 <?php 
 namespace {{ namespace }};
 
-use {{ namespace }}\Contracts\{{ dummyName }}Contract;
-use Core\Repositories\Contracts\{{ dummyName }}Contract;
+use {{ namespace }}\Contracts\{{ dummyName }}ServiceContract;
+use Core\Repositories\Contracts\{{ dummyName }}RepositoryContract;
 
-class {{ class }} implements {{ dummyName }}Contract
+class {{ class }} implements {{ dummyName }}ServiceContract
 {
-    protected $repository;
+    protected ${{ dummyName }}Repo;
 
-    public function __construct({{ dummyName }}Contract $repository)
+    public function __construct({{ dummyName }}RepositoryContract ${{ dummyName }}Repo)
     {
-        $this->repository = $repository;
+        $this->{{ dummyName }}Repo = ${{ dummyName }}Repo;
     }
 
 }

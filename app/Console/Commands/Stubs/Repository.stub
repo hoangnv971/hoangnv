@@ -1,11 +1,11 @@
 <?php
 namespace {{ namespace }};
 
-use {{ namespace }}\Contracts\{{ dummyName }}Contract;
+use {{ namespace }}\Contracts\{{ dummyName }}RepositoryContract;
 use Core\Models\{{ dummyName }};
 use Core\Repositories\BaseRepository;
 
-class {{ class }} extends BaseRepository implements {{ dummyName }}Contract
+class {{ class }}Repository extends BaseRepository implements {{ dummyName }}RepositoryContract
 {
     public function model()
     {

@@ -11,6 +11,7 @@ Route::group(
 	], function() {
 		Route::get('/', 'DashboardController@index')->name('home');
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-        Route::match(['get', 'post'],'users', 'UserController@index')->name('user.index');
+		Route::resource('users', 'UserController');
+		Route::get('/role/role-list', 'RoleController@rolesList')->name('role.list');
     }
 );

@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Core\Services\Contracts\UserServiceContract;
-use Core\Exceptions\InvalidOrderException;
 use Illuminate\Support\Str;
 
 class CreateUserCommand extends Command
@@ -29,13 +28,12 @@ class CreateUserCommand extends Command
             'role_id' => $this->argument('role') ?? 2,
             'remember_token' => Str::random(10),
         ];
-        try {
-            $response = $this->userService->storeUser($user);
-        } catch (InvalidOrderException $e) {
-            foreach($e->getMessages() as $name => $messages){
-                $this->error(implode("\n", $messages));
+        $response = $this->userService->storeUser($user);
+
+        if(!$response['status']){
+            foreach($response['messages']->toArray() as $error){
+                $this->error($error);
             }
-            exit;
         }
         $this->info("name : {$response->name}");
         $this->info("email : {$response->email}");

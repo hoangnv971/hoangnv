@@ -75,7 +75,7 @@ abstract class BaseRepository
         return $this->model->whereIn('id', $ids)->delete();
     }
 
-    public function dataTables()
+    public function dataTable()
     {
         $this->datatableQuery = $this->model;
 

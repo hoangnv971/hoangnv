@@ -2,7 +2,8 @@
 window.$ = window.jQuery = require('jquery');
 window.dt = require( 'datatables.net-bs4' );
 window._ = require('lodash');
-
+require('bootstrap')
+require('select2');
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

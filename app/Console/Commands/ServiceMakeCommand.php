@@ -50,7 +50,7 @@ class ServiceMakeCommand extends GeneratorCommand
 
     protected function buildClass($name)
     {   
-        $serviceName = Str::studly(class_basename($this->argument('name')));
+        $serviceName = Str::studly(class_basename(str_replace('Service', '', $this->argument('name'))));
         
         return str_replace( 
             ['{{dummyName}}', '{{ dummyName }}', 'dummyName'], 

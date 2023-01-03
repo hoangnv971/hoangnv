@@ -40,8 +40,8 @@ class RepositoryMakeCommand extends GeneratorCommand
 
     protected function buildClass($name)
     {
-        $repositoryName = Str::studly(class_basename($this->argument('name')));
-
+        $repositoryName = Str::studly(class_basename(str_replace('Repository', '', $this->argument('name'))));
+        
         return str_replace( 
             ['{{dummyName}}', '{{ dummyName }}', 'dummyName'], 
             $repositoryName, 

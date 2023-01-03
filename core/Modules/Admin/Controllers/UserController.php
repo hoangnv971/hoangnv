@@ -20,27 +20,39 @@ class UserController extends Controller
 	{
 		if($request->ajax()){
 			$response = $this->userSV->dataTable($request);
-
 			return response()->json($response);
 		}
 		return view('Admin::user.index');
 	}
 
+	public function create(Request $request)
+	{
+	}
+
 	public function store(Request $request)
 	{
 		if($request->ajax()){
-			try{
-				$this->userSV->storeUser($request->all());
-			}catch(InvalidOrderException $except){
-				return response()->json([
-					'status' => false,
-					'messages' => $except->getMessages()
-				]);
-			}
-			return response()->json([
-				'status' => true,
-				'messages' => 'Successful!',
-			]);
+			$result = $this->userSV->storeUser($request->all());
+			return response()->json($result);
 		}
+	}
+
+	public function show(Request $request)
+	{
+
+	}
+
+	public function edit(Request $request)
+	{
+	}
+
+	public function update(Request $request)
+	{
+		# code...
+	}
+
+	public function destroy(Request $request)
+	{
+		# code...
 	}
 }

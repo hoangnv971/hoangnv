@@ -1,7 +1,7 @@
 <?php
 namespace Core\Repositories;
 
-use Core\Models\PermissionRepository;
+use Core\Models\Permission;
 use Core\Repositories\BaseRepository;
 use Core\Repositories\Contracts\PermissionRepositoryContract;
 
@@ -11,5 +11,4 @@ class PermissionRepository extends BaseRepository implements PermissionRepositor
     {
         return PermissionRepository::class;
     }
-
 }

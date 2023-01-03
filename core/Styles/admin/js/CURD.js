@@ -1,50 +1,47 @@
-class CURD {
-	constructor(inputs, modal, action, method = 'GET')
-	{
-		this.inputs = inputs;
-		this.action = action;
-		this.method = method;
-		this.modal = modal
-		this.modalBody = modal.find('.modal-body');
-		this.form = "";
-	}
-	showModal()
-	{
-		this.modal.modal('show');
-		return this;
-	}
-	hideModal()
-	{
-		this.modal.modal('hide')
-		return this;
-	}
-	resetModal()
-	{
-		this.modalBody.html('');
-		return this;
-	}
-	createForm()
-	{
-		this.form = document.createElement("form");
-		this.form.setAttribute('action', this.action);
-		this.form.setAttribute('method', this.method);
-		this.inputs.forEach((input, key) => {
-			let tag = input.tag ? document.createElement(input.tag) : null;
-			if(tag){
-				if(typeof input.attr != "undefined"){
-					this.setAttributeTag(tag, input.attr);
-				}
-				this.form.appendChild(tag);
-			}
-		});
-		this.modalBody.html(this.form)
-		return this;
-	}
 
-	setAttributeTag(tag, attributes)
-	{
-		for(let attr in attributes){
-			tag.setAttribute(attr, attributes[attr]);
-		}
-	}
+class Curd {
+    constructor(html, url, table = null, modal = "#modal-xl"){
+        if(table) this.table = table;
+        this.modal = $(modal);
+        this.html = html;
+        this.url = url;
+        this.modalBody = this.modal.find('.modal-body');
+        this.form = null;
+        this.init();
+    }
+    init(){
+        this.modal.modal('show');
+        this.modalBody.html(this.html);
+        this.form = this.modal.find('form');
+        this.action();
+        this.reset();
+        return this;
+    }
+    reset(){
+        let modalBody = this.modalBody,
+            table = this.table;
+        this.modal.on('hidden.bs.modal', function(){
+            modalBody.html("");
+            if(table) table.ajax.reload();
+        });
+        return this;
+    }
+    action(){
+        this.modal.on('click', '.submit-modal', () => {
+            if(!this.form) return this;
+            $.ajax({
+                method: 'post',
+                url: this.url,
+                data: this.form.serialize(),
+                success: function () {
+                    
+                }
+            });
+        });
+        return this;
+    }
+    edit(){
+    }
 }
+
+module.exports = Curd;

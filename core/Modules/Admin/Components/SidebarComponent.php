@@ -28,7 +28,7 @@ class SidebarComponent extends Component
                 'childs' => [
                 ]
             ],
-            'admin.user.index' => [
+            'admin.users.index' => [
                 'icon' => '<i class="nav-icon fa-solid fa-user"></i>',
                 'name' => 'Quản lý người dùng',
                 'class' => '',

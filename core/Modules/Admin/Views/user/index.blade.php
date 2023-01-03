@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
 	<div class="card-header text-right">
-		<div class="btn btn-success">Thêm</div>
+		<button type="button" class="btn btn-success" id="create-user">Thêm</button>
 	</div>
 	<div class="card-body">
 		<table id="userTable" class="table table-bordered table-striped dataTable dtr-inline table-hover text-center">
@@ -25,17 +25,17 @@
 
 @push('scripts')
 
+
 <script type="text/javascript">
+
+$(document).ready(function () {
 	$.ajaxSetup({
-		    headers: {
-		        'X-CSRF-TOKEN': $('@csrf').val()
-		    }
-		});
-	$('#userTable').DataTable({
-	    ajax:{
-	    	url: '{{route('admin.user.index')}}',
-	    	method: 'post'
-	    },
+		headers: {
+			'X-CSRF-TOKEN': $('@csrf').val()
+		}
+	});
+	let table = $('#userTable').DataTable({
+	    ajax: '{{route('admin.users.index')}}',
 	    columns: [
 	        { data: 'id' },
 	        { data: 'name' },
@@ -49,15 +49,38 @@
 	    }],
 	    processing: true,
         serverSide: true,
-	} );
-	const create = new CURD([
-							{
-								tag : "input",
-								attr: {
-									class:"hello"
-								}
-							}
-							]
-		);
+	});
+	const formHtml = `<form action="" method="post">
+			<div class="form-group">
+				<label for="name">Tên:</label>
+				<input name="name" id="name" type="text" placeholder="name" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input name="email" id="email" type="email" placeholder="Email" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="role">Quyền:</label>
+				<select name="role" id="role" type="role" class="form-control select2-ajax" data-url="{{route('admin.role.list')}}">
+					<option value="">a</option>
+					<option value="">b</option>
+					<option value="">c</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label>
+				<input name="password" id="password" type="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="repassword">Repassword</label>
+				<input id="repassword" type="password" class="form-control">
+			</div>
+		</form>`;
+	$('#create-user').on('click', () => {
+		let create = new Curd(formHtml, "{{ route('admin.users.store') }}", table);
+		custom.select2Ajax();
+	});
+});
+
 </script>
 @endpush
