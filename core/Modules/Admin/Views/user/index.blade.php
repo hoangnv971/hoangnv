@@ -77,9 +77,13 @@ $(document).ready(function () {
 			</div>
 		</form>`;
 	$('#create-user').on('click', () => {
-		let create = new Curd(formHtml, "{{ route('admin.users.store') }}", table);
-		custom.select2Ajax();
+		let form = CURD.createForm(formHtml, "{{ route('admin.users.store') }}"); 
 	});
+	$('#modal-xl').on('hidden.bs.modal', function(){
+		table.ajax.reload();
+		$(this).find('.modal-body').html('');
+		
+	})
 });
 
 </script>

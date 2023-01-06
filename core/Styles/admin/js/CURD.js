@@ -1,47 +1,38 @@
-
-class Curd {
-    constructor(html, url, table = null, modal = "#modal-xl"){
-        if(table) this.table = table;
-        this.modal = $(modal);
-        this.html = html;
-        this.url = url;
-        this.modalBody = this.modal.find('.modal-body');
-        this.form = null;
-        this.init();
-    }
-    init(){
-        this.modal.modal('show');
-        this.modalBody.html(this.html);
-        this.form = this.modal.find('form');
-        this.action();
-        this.reset();
-        return this;
-    }
-    reset(){
-        let modalBody = this.modalBody,
-            table = this.table;
-        this.modal.on('hidden.bs.modal', function(){
-            modalBody.html("");
-            if(table) table.ajax.reload();
-        });
-        return this;
-    }
-    action(){
-        this.modal.on('click', '.submit-modal', () => {
-            if(!this.form) return this;
-            $.ajax({
-                method: 'post',
-                url: this.url,
-                data: this.form.serialize(),
-                success: function () {
-                    
-                }
-            });
-        });
-        return this;
-    }
-    edit(){
-    }
+function createForm(html, action= '', method='GET', modalClass = "#modal-xl"){
+    let modal = $(modalClass);
+    if(modal.length == 0) return;
+    modal.find('.modal-body').html(html);
+    let form = modal.find('form');
+    if(form.length == 0) return;
+    modal.modal('show');
+    form.attr('id', 'submit')
+    if(action != '') form.attr('action', action);
+    if(method != 'GET') form.attr('method', method);
+    return form;
 }
 
-module.exports = Curd;
+function submitForm(form = '#submit', modalClass= '#modal-xl'){
+    $(modalClass).on('submit', form, function(){
+        $.ajax({
+            method: 'post',
+            url: this.url,
+            data: this.form.serialize(),
+            success: function () {
+                
+            }
+        });
+    });
+}
+// function resetModal(table = false, modal = '#modal-xl')
+// {
+//     let modal = $(modal);
+//     modal.find('.modal-body').html('');
+//     if(table) table.ajax.reload();
+//     return modal;
+// }
+
+
+module.exports = {
+    createForm,
+    submitForm
+};

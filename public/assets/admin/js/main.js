@@ -1179,71 +1179,51 @@ function hasOwnProperty(obj, prop) {
 
 /***/ }),
 
-/***/ "./core/Styles/admin/js/Curd.js":
+/***/ "./core/Styles/admin/js/CURD.js":
 /*!**************************************!*\
-  !*** ./core/Styles/admin/js/Curd.js ***!
+  !*** ./core/Styles/admin/js/CURD.js ***!
   \**************************************/
 /***/ ((module) => {
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-var Curd = /*#__PURE__*/function () {
-  function Curd(html, url) {
-    var table = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-    var modal = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "#modal-xl";
-    _classCallCheck(this, Curd);
-    if (table) this.table = table;
-    this.modal = $(modal);
-    this.html = html;
-    this.url = url;
-    this.modalBody = this.modal.find('.modal-body');
-    this.form = null;
-    this.init();
-  }
-  _createClass(Curd, [{
-    key: "init",
-    value: function init() {
-      this.modal.modal('show');
-      this.modalBody.html(this.html);
-      this.form = this.modal.find('form');
-      this.action();
-      this.reset();
-      return this;
-    }
-  }, {
-    key: "reset",
-    value: function reset() {
-      var modalBody = this.modalBody,
-        table = this.table;
-      this.modal.on('hidden.bs.modal', function () {
-        modalBody.html("");
-        if (table) table.ajax.reload();
-      });
-      return this;
-    }
-  }, {
-    key: "action",
-    value: function action() {
-      var _this = this;
-      this.modal.on('click', '.submit-modal', function () {
-        if (!_this.form) return _this;
-        $.ajax({
-          method: 'post',
-          url: _this.url,
-          data: _this.form.serialize(),
-          success: function success() {}
-        });
-      });
-      return this;
-    }
-  }, {
-    key: "edit",
-    value: function edit() {}
-  }]);
-  return Curd;
-}();
-module.exports = Curd;
+function createForm(html) {
+  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'GET';
+  var modalClass = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "#modal-xl";
+  var modal = $(modalClass);
+  if (modal.length == 0) return;
+  modal.find('.modal-body').html(html);
+  var form = modal.find('form');
+  if (form.length == 0) return;
+  modal.modal('show');
+  form.attr('id', 'submit');
+  if (action != '') form.attr('action', action);
+  if (method != 'GET') form.attr('method', method);
+  return form;
+}
+function submitForm() {
+  var form = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '#submit';
+  var modalClass = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#modal-xl';
+  $(modalClass).on('submit', form, function () {
+    $.ajax({
+      method: 'post',
+      url: this.url,
+      data: this.form.serialize(),
+      success: function success() {}
+    });
+  });
+}
+// function resetModal(table = false, modal = '#modal-xl')
+// {
+//     let modal = $(modal);
+//     modal.find('.modal-body').html('');
+//     if(table) table.ajax.reload();
+//     return modal;
+// }
+
+module.exports = {
+  createForm: createForm,
+  submitForm: submitForm
+};
 
 /***/ }),
 
@@ -1336,7 +1316,7 @@ module.exports = {
 
 __webpack_require__(/*! ./bootstrap */ "./core/Styles/admin/js/bootstrap.js");
 __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.min.js");
-window.Curd = __webpack_require__(/*! ./Curd */ "./core/Styles/admin/js/Curd.js");
+window.CURD = __webpack_require__(/*! ./CURD */ "./core/Styles/admin/js/CURD.js");
 window.custom = __webpack_require__(/*! ./custom */ "./core/Styles/admin/js/custom.js");
 
 /***/ }),
