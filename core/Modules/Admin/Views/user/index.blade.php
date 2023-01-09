@@ -62,9 +62,6 @@ $(document).ready(function () {
 			<div class="form-group">
 				<label for="role">Quyền:</label>
 				<select name="role" id="role" type="role" class="form-control select2-ajax" data-url="{{route('admin.role.list')}}">
-					<option value="">a</option>
-					<option value="">b</option>
-					<option value="">c</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -77,13 +74,15 @@ $(document).ready(function () {
 			</div>
 		</form>`;
 	$('#create-user').on('click', () => {
-		let form = CURD.createForm(formHtml, "{{ route('admin.users.store') }}"); 
+		let form = CURD.createForm(formHtml, "{{ route('admin.users.store') }}");
+		custom.select2Ajax();
+		CURD.submitForm();
 	});
 	$('#modal-xl').on('hidden.bs.modal', function(){
 		table.ajax.reload();
 		$(this).find('.modal-body').html('');
-		
 	})
+
 });
 
 </script>

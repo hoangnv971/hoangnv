@@ -24,11 +24,19 @@ class UserService implements UserServiceContract
     public function storeUser($data = []) // user permission
     {
         $validator = $this->validatorUser($data);
-        if($validator->fails()) return['status' => 0, 'messages' => $validator->errors(), 'data' => []];
+        if($validator->fails()) {
+            return[
+                'status' => 0, 
+                'messages' => $validator->errors(), 
+                'data' => [],
+                'msgType' => 'error'
+            ];
+        }
         $data = $this->filterDataStore($data);
         return [
-            'status' => 1,
+            'status' => 0,
             'messages' => [],
+            'msgType' => 'success',
             'data' => $this->userRepo->create($data)
         ];
     }
