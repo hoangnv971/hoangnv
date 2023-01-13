@@ -1205,13 +1205,15 @@ function submitForm() {
   var formId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#form-submit';
   var callback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   var form = $(formId),
-    method = form.attr('method'),
-    url = form.attr('action'),
-    data = form.serialize();
+    btn = $(buttonID);
   form.on('submit', function (e) {
     return e.preventDefault();
   });
-  $(buttonID).on('click', function () {
+  btn.on('click', function () {
+    var method = form.attr('method'),
+      url = form.attr('action');
+    data = form.serialize();
+    btn.prop('disabled', true);
     $.ajax({
       method: method,
       url: url,
@@ -1220,6 +1222,10 @@ function submitForm() {
         var _result$msgType;
         var msgType = (_result$msgType = result.msgType) !== null && _result$msgType !== void 0 ? _result$msgType : undefined;
         custom.showMessages(result.messages, msgType);
+        btn.prop('disabled', false);
+        if (result.status) {
+          form.closest('.modal').modal('hide');
+        }
       },
       complete: function complete(result) {
         if (callback) callback(result);
@@ -1227,18 +1233,9 @@ function submitForm() {
     });
   });
 }
-function resetModal() {
-  var table = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-  var modalID = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '#modal-xl';
-  var modal = $(modalID);
-  modal.find('.modal-body').html('');
-  if (table) table.ajax.reload();
-  return modal;
-}
 module.exports = {
   createForm: createForm,
-  submitForm: submitForm,
-  resetModal: resetModal
+  submitForm: submitForm
 };
 
 /***/ }),
@@ -1301,7 +1298,6 @@ function select2Ajax() {
       method: method,
       dataType: 'json',
       data: function data(params) {
-        console.log(params);
         return {
           q: params.term,
           page: params.page
@@ -1332,7 +1328,7 @@ function showMessages(messages) {
         toastr[type](content, title);
       });
     } else {
-      toastr[type](messages, title);
+      toastr[type](messages[title], title);
     }
   };
   for (var title in messages) {

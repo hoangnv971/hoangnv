@@ -7,7 +7,6 @@ function select2Ajax(selector = '.select2-ajax', url = '', method = 'get', callb
             method: method,
             dataType: 'json',
             data: (params) =>{
-                console.log(params)
                 return {
                     q: params.term,
                     page: params.page
@@ -40,7 +39,7 @@ function showMessages(messages, type = 'success')
                 toastr[type](content, title)
             });
         }else{
-            toastr[type](messages, title)
+            toastr[type](messages[title], title);
         }
     }
 }

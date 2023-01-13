@@ -78,11 +78,22 @@ $(document).ready(function () {
 		custom.select2Ajax();
 		CURD.submitForm();
 	});
-	$('#modal-xl').on('hidden.bs.modal', function(){
+	$('#modal-xl').on('hidden.bs.modal', () =>{
 		table.ajax.reload();
 		$(this).find('.modal-body').html('');
-	})
+	});
 
+	$('#userTable').on('click', '.edit-user', (e) => {
+		e.preventDefault();
+		let _this = $(e.currentTarget);
+		console.log(_this.attr('href'))
+	});
+	
+	$('#userTable').on('click', '.remove-user', (e) => {
+		e.preventDefault();
+		let _this = $(e.currentTarget);
+		console.log(_this.attr('href'))
+	});
 });
 
 </script>

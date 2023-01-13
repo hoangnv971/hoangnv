@@ -13,11 +13,13 @@ function createForm(html, action= '', method='GET', modalId = "#modal-xl"){
 
 function submitForm(buttonID = '#submit-modal', formId= '#form-submit', callback = false){
     let form = $(formId),
-        method = form.attr('method'),
-        url = form.attr('action'),
-        data = form.serialize();
+        btn = $(buttonID);
     form.on('submit', (e) => e.preventDefault());
-    $(buttonID).on('click', () => {
+    btn.on('click', () => {
+        let method = form.attr('method'),
+            url = form.attr('action');
+            data = form.serialize();
+        btn.prop('disabled', true);
         $.ajax({
             method: method,
             url: url,
@@ -25,6 +27,11 @@ function submitForm(buttonID = '#submit-modal', formId= '#form-submit', callback
             success: (result) => {
                 let msgType = result.msgType ?? undefined;
                 custom.showMessages(result.messages, msgType);
+                btn.prop('disabled', false);
+                if(result.status)
+                {
+                    form.closest('.modal').modal('hide');
+                }
             },
             complete: (result) => {
                 if(callback) callback(result);
@@ -32,17 +39,9 @@ function submitForm(buttonID = '#submit-modal', formId= '#form-submit', callback
         });
     });
 }
-function resetModal(table = false, modalID = '#modal-xl')
-{
-    let modal = $(modalID);
-    modal.find('.modal-body').html('');
-    if(table) table.ajax.reload();
-    return modal;
-}
 
 
 module.exports = {
     createForm,
-    submitForm,
-    resetModal
+    submitForm
 };

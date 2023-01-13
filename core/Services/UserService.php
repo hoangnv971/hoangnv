@@ -34,28 +34,29 @@ class UserService implements UserServiceContract
         }
         $data = $this->filterDataStore($data);
         return [
-            'status' => 0,
-            'messages' => [],
+            'status' => 1,
+            'messages' => ['Successful!' => ''],
             'msgType' => 'success',
             'data' => $this->userRepo->create($data)
         ];
     }
-
     private function validatorUser($data)
     {
         return Validator::make($data, [
-                                    'email' => 'unique:users|required',
+                                    'name' => 'required',
+                                    'email' => 'unique:users|required|email',
                                     'password' => 'required'
                                 ]);
     }
-
     private function filterDataStore($data)
     {
         $data['password'] = Hash::make($data['password']);
-        $data['role_id'] = isset($data['role_id']) ? $data['role_id'] : 2;
+        $data['role_id'] = $this->checkRoleId($data);
         return $data;
     }
-
+    private function checkRoleId($data) {
+        return isset($data['role_id']) ? $data['role_id'] : 2;
+    }
     public function dataTable($request)
     {
         $result = $this->userRepo
@@ -64,7 +65,6 @@ class UserService implements UserServiceContract
                         ->dataTable();
         return $this->processDataResponse($result);
     }
-
     private function processDataResponse($data)
     {
         $users = [];
@@ -77,7 +77,6 @@ class UserService implements UserServiceContract
             'recordsFiltered' => $data['total'],
         ];
     }
-
     private function fillUserResponse($user)
     {
         return [
@@ -88,9 +87,8 @@ class UserService implements UserServiceContract
             'action' => $this->btnCURD($user->id),
         ];
     }
-
     private function btnCURD($id) {
-        return "<a class='btn btn-primary btn-sm' alt='edit' href='#'><i class='fas fa-pencil-alt'></i> </a>
-                <a class='btn btn-danger btn-sm' alt='remove' href='#'><i class='fas fa-trash'></i> </a>";
+        return "<a class='btn btn-primary btn-sm edit-user' alt='edit' href='".route('admin.users.edit', ['user' => $id])."'><i class='fas fa-pencil-alt'></i> </a>
+                <a class='btn btn-danger btn-sm remove-user' alt='remove' href='".route('admin.users.destroy', ['user' => $id])."'><i class='fas fa-trash'></i> </a>";
     }
 }
